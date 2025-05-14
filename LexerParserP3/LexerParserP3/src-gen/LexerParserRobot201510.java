@@ -171,8 +171,6 @@ public final class LexerParserRobot201510 {
       Object currentString=$fix("");
       $line=20;
       lexer=$cast(GDeterministicTransducer.class,$fix(Lexer202510.createLexer()));
-      $line=22;
-      parser=$cast(GPushdownAutomaton.class,$fix(ParserRobot202510.createParser(((gold.structures.automaton.GDeterministicTransducer)lexer).getOutputAlphabet())));
       $line=31;
       LexerParserRobot201510.testLexerParser($cast(gold.structures.automaton.ITransducer.class,lexer),$cast(gold.structures.automaton.IPushdownAutomaton.class,parser));
     }
@@ -287,117 +285,106 @@ public final class LexerParserRobot201510 {
       $line=97;
       Object inputA=$fix(LexerParserRobot201510.elements(((gold.structures.automaton.ITransducer)M).getInputAlphabet()));
       $line=98;
-      Object inputP=$fix(LexerParserRobot201510.elements(((gold.structures.automaton.IPushdownAutomaton)P).getInputAlphabet()));
-      $line=101;
+      System.out.println($message(new Object[]{"ERTRHGF"}));
+      $line=99;
+      System.out.println($message(new Object[]{inputA}));
+      $line=102;
       input=$cast(String.class,$fix(""));
-      $line=104;
-      System.out.println($message(new Object[]{"----------------------------"}));
       $line=105;
-      System.out.println($message(new Object[]{"Enter one or more lines. End with a single line with $"}));
+      System.out.println($message(new Object[]{"----------------------------"}));
       $line=106;
-      System.out.println($message(new Object[]{"If you want to stop testing, enter EXIT"}));
+      System.out.println($message(new Object[]{"Enter one or more lines. End with a single line with $"}));
       $line=107;
+      System.out.println($message(new Object[]{"If you want to stop testing, enter EXIT"}));
+      $line=108;
       string=$cast(String.class,$fix(((java.util.Scanner)sc).nextLine()));
-      $line=112;
+      $line=113;
       while (true) {
         if (!(!$opEqualY(string,"EXIT"))) break;
-        $line=114;
-        string=$cast(String.class,$fix($opAdditY(string,"  \n ")));
         $line=115;
-        input=$cast(String.class,$fix(""));
+        string=$cast(String.class,$fix($opAdditY(string,"  \n ")));
         $line=116;
+        input=$cast(String.class,$fix(""));
+        $line=117;
         while (true) {
           if (!(!$opEqualY(((java.lang.String)string).charAt($int(0)),'$'))) break;
-          $line=117;
-          input=$cast(String.class,$fix($opAdditY(input,string)));
           $line=118;
+          input=$cast(String.class,$fix($opAdditY(input,string)));
+          $line=119;
           string=$cast(String.class,$fix($opAdditY(((java.util.Scanner)sc).nextLine()," \n ")));
         }
-        $line=121;
-        Object option=$fix("");
         $line=122;
+        Object option=$fix("");
+        $line=123;
         while (true) {
           if (!(!$opMembrY(option,GCollections.asSet("1","2","3")))) break;
-          $line=123;
-          System.out.println($message(new Object[]{"What do you want to do?"}));
           $line=124;
-          System.out.println($message(new Object[]{"1. Lexer only?"}));
+          System.out.println($message(new Object[]{"What do you want to do?"}));
           $line=125;
-          System.out.println($message(new Object[]{"2. Lexer and parser?"}));
+          System.out.println($message(new Object[]{"1. Lexer only?"}));
           $line=126;
-          System.out.println($message(new Object[]{"3. Parser?"}));
+          System.out.println($message(new Object[]{"2. Lexer and parser?"}));
           $line=127;
+          System.out.println($message(new Object[]{"3. Parser?"}));
+          $line=128;
           option=$fix(((java.util.Scanner)sc).nextLine());
         }
-        $line=129;
-        Object stringOut=$fix("");
         $line=130;
+        Object stringOut=$fix("");
+        $line=131;
         if ($opMembrY(option,GCollections.asSet("1","2"))) {
-          $line=131;
+          $line=132;
           if ($opSbsetY(LexerParserRobot201510.chars(input),inputA)) {
-            $line=132;
-            Object currentString=$fix("");
             $line=133;
+            Object currentString=$fix("");
+            $line=134;
             Object images=$fix($invokeConstructor(GArrayList.class,new Object[]{}));
-            $line=135;
+            $line=136;
             Object result=$fix(Lexer202510.runLexer(M,input));
-            $line=138;
-            Object ok=$fix(LexerParserRobot201510.get1($cast(java.lang.Iterable.class,result)));
             $line=139;
-            images=$fix(LexerParserRobot201510.get2($cast(java.lang.Iterable.class,result)));
+            Object ok=$fix(LexerParserRobot201510.get1($cast(java.lang.Iterable.class,result)));
             $line=140;
+            images=$fix(LexerParserRobot201510.get2($cast(java.lang.Iterable.class,result)));
+            $line=141;
             Object tokenStream=$fix(((gold.structures.automaton.ITransducer)M).getOutputString());
-            $line=145;
-            System.out.println($message(new Object[]{$opAdditY($opAdditY("The input was ",(($bool(ok))?(""):("not ")))," accepted by the lexer.")}));
             $line=146;
+            System.out.println($message(new Object[]{$opAdditY($opAdditY("The input was ",(($bool(ok))?(""):("not ")))," accepted by the lexer.")}));
+            $line=147;
             if ($bool(ok)) {
-              $line=147;
-              System.out.println($message(new Object[]{$opAdditY("Token Stream:  ",tokenStream)}));
               $line=148;
-              System.out.println($message(new Object[]{$opAdditY("Strings: ",images)}));
+              System.out.println($message(new Object[]{$opAdditY("Token Stream:  ",tokenStream)}));
               $line=149;
+              System.out.println($message(new Object[]{$opAdditY("Strings: ",images)}));
+              $line=150;
               if ($opEqualY(option,"2")) {
-                $line=150;
-                ok=$fix(((gold.structures.automaton.IPushdownAutomaton)P).acceptsString($cast(java.lang.String.class,tokenStream)));
                 $line=151;
+                ok=$fix(((gold.structures.automaton.IPushdownAutomaton)P).acceptsString($cast(java.lang.String.class,tokenStream)));
+                $line=152;
                 System.out.println($message(new Object[]{$opAdditY("Parser result: ",(($bool(ok))?("accepted "):("rejected ")))}));
               }
             }
             else {
-              $line=153;
+              $line=154;
               System.out.println($message(new Object[]{$opAdditY("Partial token Stream: ",tokenStream)}));
             }
           }
           else {
-            $line=155;
+            $line=156;
             System.out.println($message(new Object[]{$opAdditY("Input contains invalid characters: ",$opDiffeY(LexerParserRobot201510.chars(input),inputA))}));
           }
         }
-        else {
-          $line=158;
-          if ($opSbsetY(LexerParserRobot201510.chars(input),inputP)) {
-            $line=159;
-            Object ok=$fix(((gold.structures.automaton.IPushdownAutomaton)P).acceptsString($cast(java.lang.String.class,input)));
-            $line=160;
-            System.out.println($message(new Object[]{$opAdditY("Parser result: ",(($bool(ok))?("accepted "):("rejected ")))}));
-          }
-          else {
-            $line=162;
-            System.out.println($message(new Object[]{$opAdditY("Input contains invalid characters: ",$opDiffeY(LexerParserRobot201510.chars(input),inputP))}));
-          }
-        }
-        $line=165;
+        $line=166;
         System.out.println($message(new Object[]{"----------------------------"}));
-        $line=167;
-        System.out.println($message(new Object[]{"Enter one or more lines. End with a single line with $"}));
         $line=168;
-        System.out.println($message(new Object[]{"If you want to stop testing, enter EXIT"}));
+        System.out.println($message(new Object[]{"Enter one or more lines. End with a single line with $"}));
         $line=169;
+        System.out.println($message(new Object[]{"If you want to stop testing, enter EXIT"}));
+        $line=170;
         string=$cast(String.class,$fix(((java.util.Scanner)sc).nextLine()));
       }
-      $line=172;
-      System.out.println($message(new Object[]{"Good bye"}));
       $line=173;
+      System.out.println($message(new Object[]{"Good bye"}));
+      $line=174;
       System.out.println($message(new Object[]{""}));
     }
     catch (Throwable $throwable) {

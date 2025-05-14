@@ -19,7 +19,7 @@ procedure main(args:String[]) begin
     
     lexer = Lexer202510.createLexer()
   
-     parser = ParserRobot202510.createParser(lexer.getOutputAlphabet())
+     //parser = ParserRobot202510.createParser(lexer.getOutputAlphabet())
 	 
 	 
 	 //testLexer(lexer)
@@ -95,8 +95,9 @@ procedure testLexerParser(M:ITransducer, P:IPushdownAutomaton) begin
     
     
     inputA = elements(M.getInputAlphabet())
-      inputP = elements(P.getInputAlphabet())
-    
+    print "ERTRHGF"
+    print inputA
+    //inputP = elements(P.getInputAlphabet())
     
 	input = ""
 		
@@ -154,13 +155,13 @@ procedure testLexerParser(M:ITransducer, P:IPushdownAutomaton) begin
 				end
 				else print "Input contains invalid characters: "+ (chars(input) \ inputA)
 			end
-	else
-		 	if chars(input) ⊆ inputP then
-            		ok:=P.acceptsString(input)
-         				print "Parser result: "+(ok?"accepted ":"rejected ")
-		
-		   else print "Input contains invalid characters: "+ (chars(input) \ inputP)
-	end	
+⧐	else
+⧐		 	if chars(input) ⊆ inputP then
+⧐            		ok:=P.acceptsString(input)
+⧐         				print "Parser result: "+(ok?"accepted ":"rejected ")
+⧐		
+⧐		   else print "Input contains invalid characters: "+ (chars(input) \ inputP)
+⧐	end	
 	end
        	print "----------------------------"
 	

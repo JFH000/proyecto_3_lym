@@ -1,0 +1,56 @@
+using gold.**
+
+toSet(C) :=  {x|  x in C}
+
+
+///====   mini Parser===
+
+function createParser(A):IPushdownAutomaton begin
+	Q:={0,1,2,"m1","m2","o1","e","t1"}
+	
+	Σ:=toSet(A)  ∪ {' ', '\n'}
+	
+	Γ:={'1'}
+	q₀:=0
+	F:= {2}
+	M:=GPushdownAutomaton(Q,Σ,Γ,q₀,F)
+SkipChars := {' ', '\n'}   // this will only  be used when testing only the parser as the lexer removes  SkipChars
+	
+   M.delta(0,1,"[").push("1")
+    M.delta(1,"m1","m:").ignore()  // move
+   M.delta("m1","e","#").ignore()
+    M.delta("m1","m2","#").ignore()
+   M.delta("m1","e","v").ignore()
+    M.delta("m1","m2","v").ignore()
+     
+     
+     M.delta("m2","o1","&:").ignore() 
+     M.delta("o1","e","n").ignore()  //orientation (last token before .)
+     
+     M.delta(1,"t1","T:").ignore()  // turn.
+     M.delta("t1","e","r").ignore()  // direction (last token before .)
+     
+      M.delta("e",1,".").ignore()     // command end
+   
+    M.delta(1,2,"]").pop("1") // block end
+    
+     
+  
+
+
+ 
+
+
+
+
+
+ for each q in Q do
+ 	for each s in SkipChars do
+ 	   M.delta(q,q,λ+s).ignore()
+ end
+ end
+
+
+return M
+end
+

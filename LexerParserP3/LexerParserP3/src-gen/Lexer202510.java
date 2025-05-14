@@ -539,18 +539,12 @@ public final class Lexer202510 {
         $v31.union(GCollections.unmodifiableSet(((java.lang.Iterable)(GCollections.asSet(x)))));
       }
       Out=$cast(ISet.class,$fix($opUnionY(CharsSymbols1,$v31)));
-      $line=100;
-      System.out.println($message(new Object[]{Out}));
       $line=101;
       Ids=$cast(ISet.class,$fix(GCollections.asSet("IdU","IdL")));
       $line=103;
       Object Q=$fix($opUnionY($opUnionY(GCollections.asSet("INIT","IdU","Num","Err","IdL"),preKW),preOps));
-      $line=105;
-      System.out.println($message(new Object[]{Q}));
       $line=107;
       Object \u03A3=$fix($opUnionY($opUnionY($opUnionY(alphaNum,Lexer202510.charsStrings(allSymbols)),skipChars),GCollections.asSet(':','-')));
-      $line=109;
-      System.out.println($message(new Object[]{\u03A3}));
       $line=111;
       Object q_0=$fix("INIT");
       $line=112;

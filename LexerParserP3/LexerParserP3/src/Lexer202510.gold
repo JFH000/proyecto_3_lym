@@ -92,21 +92,21 @@ function createLexer():ITransducer begin
 	
 	preOps := allPrefixes(allSymbols)
  	preKW  := allPrefixes(keyWords)
-   StartOps := (∪ x | x ∈ allSymbols: {x.charAt(0)} ) 
+	StartOps := (∪ x | x ∈ allSymbols: {x.charAt(0)} ) 
 	Symbols1 := ((∪ x | x ∈ StartOps: {""+x} ) ∩ allSymbols) // \ {"\n"}  add this if \n  is a token 
 	CharsSymbols1 := (∪ x | x ∈ Symbols1: {x.charAt(0)} )
 	Out   := 	CharsSymbols1 ∪ (∪ x | x ∈ translation.values(): {x} )
 
-	print Out
-   Ids:= {"IdU","IdL"}
+	//print Out
+	Ids:= {"IdU","IdL"}
 
-   Q:= {"INIT","IdU","Num","Err","IdL"} ∪ preKW ∪ preOps 
+	Q:= {"INIT","IdU","Num","Err","IdL"} ∪ preKW ∪ preOps 
 	
-	print Q
+	//print Q
 	
 	Σ:= alphaNum ∪ charsStrings(allSymbols) ∪ skipChars ∪ {':','-'}
 	
-	print Σ
+	//print Σ
 	 
 	q₀:="INIT"
 	F:= {"INIT"}
@@ -148,7 +148,7 @@ function δ(state,σ) begin
     elseif q ∈ Ids  and σ in alphaNum  then return q
     elseif q ∈ Ids and  λ+σ in preOps  then return λ+σ
     else return "Err"
-end	
+	end	
 end 
 
  
@@ -205,7 +205,7 @@ function h(q,σ) begin
     else 
     	 currentString := currentString + s
     	return  λ
-end
+	end
 end
 
 // **************  This is the only  procedure you have to change for your lexer 

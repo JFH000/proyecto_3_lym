@@ -106,6 +106,7 @@ function createLexer():ITransducer begin
 	
 	Σ:= alphaNum ∪ charsStrings(allSymbols) ∪ skipChars ∪ {':','-'}
 	
+	print Σ
 	 
 	q₀:="INIT"
 	F:= {"INIT"}
@@ -213,36 +214,65 @@ end
  
  	skipChars := {' ', '\t', '\n'}
 	alphaUpper := ('A'‥'Z')
-   alphaLower := ('a' ‥ 'z') 
-   digits :=  ('0'‥'9')
+	alphaLower := ('a' ‥ 'z') 
+	digits :=  ('0'‥'9')
 	alphaNum := alphaUpper ∪ alphaLower ∪ digits  ∪ {'?','#'}      // Alphanumeric characters
 
-	keyWords :={"turn","face","jump","move","#right","#north","inDir"}  // keywords  y the language is not case sensitive use only ;oercase letters:
+	keyWords :={"proc"} ∪
+					{"goto","with","move","turn","face","put","pick","jump","nop"} ∪
+					{"with","ofType","toThe","inDir"} ∪
+					{"#left","#right","#around","#north","#south","#west","#east"} ∪
+					{"if","then","else","while","do","for","repeat"} ∪
+					{"facing","canPut","canPick","canMove","canJump","not"} ∪
+					{}
+					
 	allSymbols := {  "(" , ")", ":", ".", "|","[", "]" }  // Symbols  and brackets, both single char and  multicharacter
-	
-	   
-	
-	
+
+
+
 	// TRANSLATION FOR ALL STRINGS IN KEYWORDS
 	
 	// Operators (length 1) can be translated as themselves so you don't need to add it to the translation table
 	
 	// translation.put("\n",'@')  only use this if \n is part of the language and is not skipped @ must not be used for any other translation 
-	 
-	  translation.put("turn",'T')
 
-	translation.put("move",'m')
-	translation.put("#right",'r')
-   translation.put( "#north",'n')
-   translation.put( "inDir",'&')
-   
-	translation.put("IdL",'v')  
-	translation.put("IdU",'v')  //if  there is no difference between names that start with caps and those that don't,
-	    							//assign the same translation
+
+				
+	p("proc",'P')
+	
+	p("goto",'G')
+	p("move",'M')
+	p("turn",'T')
+	p("face",'F')
+	p("put",'U')
+	p("pick",'I')
+	p("jump",'J')
+	p("nop",'N')
+	
+	p("with",'h')
+	p("ofType",'o')
+	p("toThe",'t')
+	p("inDir",'i')
+	
+
+	p("#left",'l')
+	p("#right",'r')
+	p("#around",'a')
+	p("#north",'n')
+	p("#south",'s')
+	p("#west",'w')
+	p("#east",'e')
+
+	//translation.put("IdL",'v')  
+	//translation.put("IdU",'v')  //if  there is no difference between names that start with caps and those that don't,
+	    							//assign the same translation 
+	//translation.put("Num",'#')
 	 
-	 translation.put("Num",'#')
-	 // **************
-	 
+end
+
+function p(n1,n2) begin
+	translation.put(n1,n2)
+	return λ
 end
 
 

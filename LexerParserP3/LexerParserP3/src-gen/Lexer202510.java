@@ -952,9 +952,9 @@ public final class Lexer202510 {
       $line=219;
       alphaNum=$cast(ISet.class,$fix($opUnionY($opUnionY($opUnionY(alphaUpper,alphaLower),digits),GCollections.asSet('?','#'))));
       $line=221;
-      keyWords=$cast(ISet.class,$fix($opUnionY($opUnionY($opUnionY($opUnionY($opUnionY($opUnionY(GCollections.asSet("proc"),GCollections.asSet("goto","with","move","turn","face","put","pick","jump","nop")),GCollections.asSet("with","ofType","toThe","inDir")),GCollections.asSet("#left","#right","#around","#north","#south","#west","#east")),GCollections.asSet("if","then","else","while","do","for","repeat")),GCollections.asSet("facing","canPut","canPick","canMove","canJump","not")),GCollections.emptySet())));
+      keyWords=$cast(ISet.class,$fix($opUnionY($opUnionY($opUnionY($opUnionY($opUnionY($opUnionY(GCollections.asSet("proc"),GCollections.asSet("goto","with","move","turn","face","put","pick","jump","nop")),GCollections.asSet("with","ofType","toThe","inDir")),GCollections.asSet("#left","#right","#around","#north","#south","#west","#east","#chips","#balloons")),GCollections.asSet("if","then","else","while","do","for","repeat")),GCollections.asSet("facing","canPut","canPick","canMove","canJump","not")),GCollections.emptySet())));
       $line=229;
-      allSymbols=$cast(ISet.class,$fix(GCollections.asSet("(",")",":",".","|","[","]")));
+      allSymbols=$cast(ISet.class,$fix(GCollections.asSet("(",")",":","=",".","|","[","]")));
       $line=241;
       Lexer202510.p("proc",'P');
       $line=243;
@@ -995,6 +995,12 @@ public final class Lexer202510 {
       Lexer202510.p("#west",'w');
       $line=264;
       Lexer202510.p("#east",'e');
+      $line=266;
+      ((gold.structures.map.GHashTableMap)translation).put("IdL",'v');
+      $line=267;
+      ((gold.structures.map.GHashTableMap)translation).put("IdU",'v');
+      $line=269;
+      ((gold.structures.map.GHashTableMap)translation).put("Num",'#');
     }
     catch (Throwable $throwable) {
       $rethrow($throwable,Lexer202510.class,"initialize",$line);

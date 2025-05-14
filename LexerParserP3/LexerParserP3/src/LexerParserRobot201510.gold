@@ -125,7 +125,7 @@ procedure testLexerParser(M:ITransducer, P:IPushdownAutomaton) begin
 			print "1. Lexer only?" 
 			print "2. Lexer and parser?"
 			print "3. Parser?"
-		 	option := sc.nextLine()
+		 	option := "1"//sc.nextLine()
 		end
        stringOut:= ""
        if option ∈  { "1",  "2"} then

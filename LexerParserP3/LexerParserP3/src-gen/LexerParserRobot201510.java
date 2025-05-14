@@ -327,7 +327,7 @@ public final class LexerParserRobot201510 {
           $line=127;
           System.out.println($message(new Object[]{"3. Parser?"}));
           $line=128;
-          option=$fix(((java.util.Scanner)sc).nextLine());
+          option=$fix("1");
         }
         $line=130;
         Object stringOut=$fix("");

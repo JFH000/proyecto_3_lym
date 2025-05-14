@@ -221,12 +221,12 @@ end
 	keyWords :={"proc"} ∪
 					{"goto","with","move","turn","face","put","pick","jump","nop"} ∪
 					{"with","ofType","toThe","inDir"} ∪
-					{"#left","#right","#around","#north","#south","#west","#east"} ∪
+					{"#left","#right","#around","#north","#south","#west","#east","#chips","#balloons"} ∪
 					{"if","then","else","while","do","for","repeat"} ∪
 					{"facing","canPut","canPick","canMove","canJump","not"} ∪
 					{}
 					
-	allSymbols := {  "(" , ")", ":", ".", "|","[", "]" }  // Symbols  and brackets, both single char and  multicharacter
+	allSymbols := {  "(" , ")", ":", "=", ".", "|","[", "]" }  // Symbols  and brackets, both single char and  multicharacter
 
 
 
@@ -263,10 +263,10 @@ end
 	p("#west",'w')
 	p("#east",'e')
 
-	//translation.put("IdL",'v')  
-	//translation.put("IdU",'v')  //if  there is no difference between names that start with caps and those that don't,
+	translation.put("IdL",'v')  
+	translation.put("IdU",'v')  //if  there is no difference between names that start with caps and those that don't,
 	    							//assign the same translation 
-	//translation.put("Num",'#')
+	translation.put("Num",'#')
 	 
 end
 

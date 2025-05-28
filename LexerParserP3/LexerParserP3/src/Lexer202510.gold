@@ -209,8 +209,43 @@ function h(q,σ) begin
 end
 
 // **************  This is the only  procedure you have to change for your lexer 
+
+ procedure initialize_() begin
  
- procedure initialize() begin
+ 	skipChars := {' ', '\t', '\n'}
+	alphaUpper := ('A'‥'Z')
+   alphaLower := ('a' ‥ 'z') 
+   digits :=  ('0'‥'9')
+	alphaNum := alphaUpper ∪ alphaLower ∪ digits  ∪ {'?','#'}      // Alphanumeric characters
+
+	keyWords :={"turn","face","jump","move","#right","#north","inDir"}  // keywords  y the language is not case sensitive use only ;oercase letters:
+	allSymbols := {  "(" , ")", ":", ".", "|","[", "]" }  // Symbols  and brackets, both single char and  multicharacter
+	
+	   
+	
+	
+	// TRANSLATION FOR ALL STRINGS IN KEYWORDS
+	
+	// Operators (length 1) can be translated as themselves so you don't need to add it to the translation table
+	
+	// translation.put("\n",'@')  only use this if \n is part of the language and is not skipped @ must not be used for any other translation 
+	 
+	  translation.put("turn",'T')
+
+	translation.put("move",'m')
+	translation.put("#right",'r')
+   translation.put( "#north",'n')
+   translation.put( "inDir",'&')
+   
+	translation.put("IdL",'v')  
+	translation.put("IdU",'v')  //if  there is no difference between names that start with caps and those that don't,
+	    							//assign the same translation
+	 
+	 translation.put("Num",'#')
+	 // **************
+end
+
+procedure initialize() begin
  
  	skipChars := {' ', '\t', '\n'}
 	alphaUpper := ('A'‥'Z')
@@ -228,40 +263,55 @@ end
 					
 	allSymbols := {  "(" , ")", ":", "=", ".", "|","[", "]" }  // Symbols  and brackets, both single char and  multicharacter
 
-
-
 	// TRANSLATION FOR ALL STRINGS IN KEYWORDS
 	
 	// Operators (length 1) can be translated as themselves so you don't need to add it to the translation table
 	
 	// translation.put("\n",'@')  only use this if \n is part of the language and is not skipped @ must not be used for any other translation 
-
-
 				
 	p("proc",'P')
 	
 	p("goto",'G')
 	p("move",'M')
-	p("turn",'T')
+	p("turn",'Y')//
 	p("face",'F')
 	p("put",'U')
-	p("pick",'I')
+	p("pick",'Z')//
 	p("jump",'J')
-	p("nop",'N')
+	p("nop",'/')
 	
 	p("with",'h')
 	p("ofType",'o')
 	p("toThe",'t')
 	p("inDir",'i')
-	
 
-	p("#left",'l')
-	p("#right",'r')
-	p("#around",'a')
-	p("#north",'n')
-	p("#south",'s')
-	p("#west",'w')
-	p("#east",'e')
+	p("#north",'O')
+	p("#south",'O')
+	p("#west",'O')
+	p("#east",'O')
+	
+	p("#balloons",'X')
+	p("#chips",'X')
+	
+	p("#front",'d')
+	p("#left",'d')
+	p("#right",'d')
+	p("#around",'d')
+	
+	p("if",'I')
+	p("then",'T')
+	p("else",'E')
+	p("while",'W')
+	p("do",'D')
+	p("for",'F')
+	p("repeat",'R')
+	
+	p("facing",'1')
+	p("canPut",'2')
+	p("canPick",'3')
+	p("canMove",'4')
+	p("canJump",'5')
+	p("not",'6')
 
 	translation.put("IdL",'v')  
 	translation.put("IdU",'v')  //if  there is no difference between names that start with caps and those that don't,

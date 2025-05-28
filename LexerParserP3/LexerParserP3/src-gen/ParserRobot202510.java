@@ -64,67 +64,325 @@ public final class ParserRobot202510 {
     }
     return $result;
   }
+  public static Object M=null;
   public static IPushdownAutomaton createParser(Object A) {
     int $line=0;
     Object $result=null;
     $try:try {
-      $line=9;
-      Object Q=$fix(GCollections.asSet(0,1,2,"m1","m2","o1","e","t1"));
-      $line=11;
+      $line=8;
+      Object Q=$fix($opUnionY(GCollections.asSet(1),GCollections.asSet("varDef1","block1","procDefNoParams1","procDefParams1","blockp1","blocki1","blocki2","blocki3","blocki4","blocki5","blocki6","condition1","conditionn1","limitBlock1","limitBlock2","blockw1","blockw2","blockw3","blockf1")));
+      $line=12;
       Object \u03A3=$fix($opUnionY(ParserRobot202510.toSet(A),GCollections.asSet(' ','\n')));
       $line=13;
-      Object \u0393=$fix(GCollections.asSet('1'));
+      Object \u0393=$fix(\u03A3);
       $line=14;
-      Object q_0=$fix(0);
+      Object q_0=$fix(1);
       $line=15;
-      Object F=$fix(GCollections.asSet(2));
+      Object F=$fix(GCollections.asSet(1));
       $line=16;
-      Object M=$fix($invokeConstructor(GPushdownAutomaton.class,new Object[]{Q,\u03A3,\u0393,q_0,F}));
-      $line=17;
-      Object SkipChars=$fix(GCollections.asSet(' ','\n'));
+      M=$fix($invokeConstructor(GPushdownAutomaton.class,new Object[]{Q,\u03A3,\u0393,q_0,F}));
+      $line=18;
+      ParserRobot202510.defVars(1,1);
       $line=19;
-      $invokeMethod("push",((gold.structures.automaton.GPushdownAutomaton)M).delta(0,1,$cast(java.lang.String.class,"[")),new Object[]{"1"});
+      ParserRobot202510.procDefNoParams(1);
       $line=20;
-      $invokeMethod("ignore",((gold.structures.automaton.GPushdownAutomaton)M).delta(1,"m1",$cast(java.lang.String.class,"m:")),new Object[]{});
+      ParserRobot202510.procDefParams(1);
       $line=21;
-      $invokeMethod("ignore",((gold.structures.automaton.GPushdownAutomaton)M).delta("m1","e",$cast(java.lang.String.class,"#")),new Object[]{});
-      $line=22;
-      $invokeMethod("ignore",((gold.structures.automaton.GPushdownAutomaton)M).delta("m1","m2",$cast(java.lang.String.class,"#")),new Object[]{});
-      $line=23;
-      $invokeMethod("ignore",((gold.structures.automaton.GPushdownAutomaton)M).delta("m1","e",$cast(java.lang.String.class,"v")),new Object[]{});
+      ParserRobot202510.block(1,1,true,true,true);
       $line=24;
-      $invokeMethod("ignore",((gold.structures.automaton.GPushdownAutomaton)M).delta("m1","m2",$cast(java.lang.String.class,"v")),new Object[]{});
-      $line=27;
-      $invokeMethod("ignore",((gold.structures.automaton.GPushdownAutomaton)M).delta("m2","o1",$cast(java.lang.String.class,"&:")),new Object[]{});
+      ParserRobot202510.ignore(1,1," ");
+      $line=25;
+      ParserRobot202510.ignore(1,1,"\n");
       $line=28;
-      $invokeMethod("ignore",((gold.structures.automaton.GPushdownAutomaton)M).delta("o1","e",$cast(java.lang.String.class,"n")),new Object[]{});
-      $line=30;
-      $invokeMethod("ignore",((gold.structures.automaton.GPushdownAutomaton)M).delta(1,"t1",$cast(java.lang.String.class,"T:")),new Object[]{});
-      $line=31;
-      $invokeMethod("ignore",((gold.structures.automaton.GPushdownAutomaton)M).delta("t1","e",$cast(java.lang.String.class,"r")),new Object[]{});
-      $line=33;
-      $invokeMethod("ignore",((gold.structures.automaton.GPushdownAutomaton)M).delta("e",1,$cast(java.lang.String.class,".")),new Object[]{});
-      $line=35;
-      $invokeMethod("pop",((gold.structures.automaton.GPushdownAutomaton)M).delta(1,2,$cast(java.lang.String.class,"]")),new Object[]{"1"});
-      $line=47;
-      for (Object $v3:GCollections.unmodifiableCollection(Q)) {
-        Object q=$v3;
-        $line=48;
-        for (Object $v4:GCollections.unmodifiableCollection(SkipChars)) {
-          Object s=$v4;
-          $line=49;
-          $invokeMethod("ignore",((gold.structures.automaton.GPushdownAutomaton)M).delta(q,q,$cast(java.lang.String.class,$opAdditY("",s))),new Object[]{});
-        }
+      if ($bool(false)) {
+        $line=29;
+        GAutomataFrame.show($cast(gold.structures.automaton.IAutomaton.class,M));
       }
-      $line=54;
+      $line=31;
       $result=M;
       if (true) break $try;
-      $line=55;
+      $line=32;
       $rethrow(new RuntimeException("The function \"createParser(A:Object)\" did not return a value."));
     }
     catch (Throwable $throwable) {
       $rethrow($throwable,ParserRobot202510.class,"createParser",$line);
     }
     return $cast(IPushdownAutomaton.class,$result);
+  }
+  public static Object defVars(Object state1, Object state2) {
+    int $line=0;
+    Object $result=null;
+    $try:try {
+      $line=35;
+      Object s1=$fix("varDef1");
+      $line=36;
+      ParserRobot202510.ignore(state1,s1,"|");
+      $line=37;
+      ParserRobot202510.ignore(s1,s1,"v");
+      $line=38;
+      ParserRobot202510.ignore(s1,state2,"|");
+    }
+    catch (Throwable $throwable) {
+      $rethrow($throwable,ParserRobot202510.class,"defVars",$line);
+    }
+    return $result;
+  }
+  public static Object procDefNoParams(Object state) {
+    int $line=0;
+    Object $result=null;
+    $try:try {
+      $line=42;
+      Object s1=$fix("procDefNoParams1");
+      $line=43;
+      ParserRobot202510.ignore(state,s1,"Pv");
+      $line=44;
+      ParserRobot202510.block(s1,state,true,true,true);
+    }
+    catch (Throwable $throwable) {
+      $rethrow($throwable,ParserRobot202510.class,"procDefNoParams",$line);
+    }
+    return $result;
+  }
+  public static Object procDefParams(Object state) {
+    int $line=0;
+    Object $result=null;
+    $try:try {
+      $line=49;
+      Object s1=$fix("procDefParams1");
+      $line=50;
+      ParserRobot202510.ignore(state,s1,"P");
+      $line=51;
+      ParserRobot202510.ignore(s1,s1,"v:v");
+      $line=52;
+      ParserRobot202510.ignore(s1,s1,"v:#");
+      $line=53;
+      ParserRobot202510.block(s1,state,true,true,true);
+    }
+    catch (Throwable $throwable) {
+      $rethrow($throwable,ParserRobot202510.class,"procDefParams",$line);
+    }
+    return $result;
+  }
+  public static Object block(Object state1, Object state2, Object useIf, Object useWhile, Object useFor) {
+    int $line=0;
+    Object $result=null;
+    $try:try {
+      $line=57;
+      Object s1=$fix("block1");
+      $line=58;
+      ParserRobot202510.ignore(state1,s1,"[");
+      $line=59;
+      ParserRobot202510.defVars(s1,s1);
+      $line=62;
+      ParserRobot202510.ignore(s1,s1,"v:=v.");
+      $line=63;
+      ParserRobot202510.ignore(s1,s1,"v:=#.");
+      $line=66;
+      ParserRobot202510.ignore(s1,s1,"v.");
+      $line=69;
+      Object sp=$fix("blockp1");
+      $line=70;
+      ParserRobot202510.ignore(s1,sp,"");
+      $line=71;
+      ParserRobot202510.ignore(sp,sp,"v:v");
+      $line=72;
+      ParserRobot202510.ignore(sp,sp,"v:#");
+      $line=73;
+      ParserRobot202510.ignore(sp,s1,".");
+      $line=76;
+      if ($bool(useIf)) {
+        $line=77;
+        Object si1=$fix("blocki1");
+        $line=78;
+        Object si2=$fix("blocki2");
+        $line=79;
+        Object si3=$fix("blocki3");
+        $line=80;
+        Object si4=$fix("blocki4");
+        $line=81;
+        Object si5=$fix("blocki5");
+        $line=82;
+        ParserRobot202510.ignore(s1,si1,"I:");
+        $line=83;
+        ParserRobot202510.condition(si1,si2,true);
+        $line=84;
+        ParserRobot202510.ignore(si2,si3,"T:");
+        $line=85;
+        ParserRobot202510.block(si3,si4,false,useWhile,useFor);
+        $line=86;
+        ParserRobot202510.ignore(si4,si5,"E:");
+        $line=87;
+        ParserRobot202510.block(si5,s1,false,useWhile,useFor);
+      }
+      $line=91;
+      if ($bool(useWhile)) {
+        $line=92;
+        Object sw1=$fix("blockw1");
+        $line=93;
+        Object sw2=$fix("blockw2");
+        $line=94;
+        Object sw3=$fix("blockw3");
+        $line=95;
+        ParserRobot202510.ignore(s1,sw1,"W:");
+        $line=96;
+        ParserRobot202510.condition(sw1,sw2,true);
+        $line=97;
+        ParserRobot202510.ignore(sw2,sw3,"D:");
+        $line=98;
+        ParserRobot202510.block(sw3,s1,useIf,false,useFor);
+      }
+      $line=102;
+      if ($bool(useFor)) {
+        $line=103;
+        Object sf1=$fix("blockf1");
+        $line=104;
+        ParserRobot202510.ignore(s1,sf1,"F:#R:");
+        $line=105;
+        ParserRobot202510.ignore(s1,sf1,"F:vR:");
+        $line=106;
+        ParserRobot202510.block(sf1,s1,useIf,useWhile,false);
+      }
+      $line=112;
+      ParserRobot202510.ignore(s1,s1,"G:#h:#.");
+      $line=113;
+      ParserRobot202510.ignore(s1,s1,"G:#h:v.");
+      $line=114;
+      ParserRobot202510.ignore(s1,s1,"G:vh:#.");
+      $line=115;
+      ParserRobot202510.ignore(s1,s1,"G:vh:v.");
+      $line=117;
+      ParserRobot202510.ignore(s1,s1,"M:#.");
+      $line=118;
+      ParserRobot202510.ignore(s1,s1,"M:v.");
+      $line=119;
+      ParserRobot202510.ignore(s1,s1,"M:#t:D.");
+      $line=120;
+      ParserRobot202510.ignore(s1,s1,"M:vt:D.");
+      $line=121;
+      ParserRobot202510.ignore(s1,s1,"M:#i:O.");
+      $line=122;
+      ParserRobot202510.ignore(s1,s1,"M:vi:O.");
+      $line=124;
+      ParserRobot202510.ignore(s1,s1,"Y:d.");
+      $line=126;
+      ParserRobot202510.ignore(s1,s1,"F:O.");
+      $line=128;
+      ParserRobot202510.ignore(s1,s1,"U:#o:X.");
+      $line=129;
+      ParserRobot202510.ignore(s1,s1,"U:vo:X.");
+      $line=131;
+      ParserRobot202510.ignore(s1,s1,"Z:#o:X.");
+      $line=132;
+      ParserRobot202510.ignore(s1,s1,"Z:vo:X.");
+      $line=134;
+      ParserRobot202510.ignore(s1,s1,"J:#t:D.");
+      $line=135;
+      ParserRobot202510.ignore(s1,s1,"J:vt:D.");
+      $line=136;
+      ParserRobot202510.ignore(s1,s1,"J:#i:O.");
+      $line=137;
+      ParserRobot202510.ignore(s1,s1,"J:vi:O.");
+      $line=139;
+      ParserRobot202510.ignore(s1,s1,"/.");
+      $line=143;
+      ParserRobot202510.ignore(s1,state2,"]");
+    }
+    catch (Throwable $throwable) {
+      $rethrow($throwable,ParserRobot202510.class,"block",$line);
+    }
+    return $result;
+  }
+  public static Object condition(Object state1, Object state2, Object useNot) {
+    int $line=0;
+    Object $result=null;
+    $try:try {
+      $line=149;
+      Object sn1=$fix("conditionn1");
+      $line=151;
+      ParserRobot202510.ignore(state1,state2,"1:O");
+      $line=153;
+      ParserRobot202510.ignore(state1,state2,"2:#o:X");
+      $line=154;
+      ParserRobot202510.ignore(state1,state2,"2:vo:X");
+      $line=156;
+      ParserRobot202510.ignore(state1,state2,"3:#o:X");
+      $line=157;
+      ParserRobot202510.ignore(state1,state2,"3:vo:X");
+      $line=159;
+      ParserRobot202510.ignore(state1,state2,"4:#t:d");
+      $line=160;
+      ParserRobot202510.ignore(state1,state2,"4:vt:d");
+      $line=161;
+      ParserRobot202510.ignore(state1,state2,"4:#i:O");
+      $line=162;
+      ParserRobot202510.ignore(state1,state2,"4:vi:O");
+      $line=164;
+      ParserRobot202510.ignore(state1,state2,"5:#t:d");
+      $line=165;
+      ParserRobot202510.ignore(state1,state2,"5:vt:d");
+      $line=166;
+      ParserRobot202510.ignore(state1,state2,"5:#i:O");
+      $line=167;
+      ParserRobot202510.ignore(state1,state2,"5:vi:O");
+      $line=169;
+      if ($bool(useNot)) {
+        $line=170;
+        ParserRobot202510.ignore(state1,sn1,"6:");
+        $line=171;
+        ParserRobot202510.condition(sn1,state2,false);
+      }
+    }
+    catch (Throwable $throwable) {
+      $rethrow($throwable,ParserRobot202510.class,"condition",$line);
+    }
+    return $result;
+  }
+  public static Object ct(Object op1, Object op2) {
+    int $line=0;
+    Object $result=null;
+    $try:try {
+      $line=177;
+      $invokeMethod("changeTop",$invokeMethod("delta",M,new Object[]{1,1,""}),new Object[]{op1,op2});
+    }
+    catch (Throwable $throwable) {
+      $rethrow($throwable,ParserRobot202510.class,"ct",$line);
+    }
+    return $result;
+  }
+  public static Object push(Object a, Object b, Object c, Object op) {
+    int $line=0;
+    Object $result=null;
+    $try:try {
+      $line=181;
+      $invokeMethod("push",$invokeMethod("delta",M,new Object[]{a,b,c}),new Object[]{op});
+    }
+    catch (Throwable $throwable) {
+      $rethrow($throwable,ParserRobot202510.class,"push",$line);
+    }
+    return $result;
+  }
+  public static Object pop(Object a, Object b, Object c, Object op) {
+    int $line=0;
+    Object $result=null;
+    $try:try {
+      $line=185;
+      $invokeMethod("pop",$invokeMethod("delta",M,new Object[]{a,b,c}),new Object[]{op});
+    }
+    catch (Throwable $throwable) {
+      $rethrow($throwable,ParserRobot202510.class,"pop",$line);
+    }
+    return $result;
+  }
+  public static Object ignore(Object a, Object b, Object op) {
+    int $line=0;
+    Object $result=null;
+    $try:try {
+      $line=189;
+      $invokeMethod("ignore",$invokeMethod("delta",M,new Object[]{a,b,op}),new Object[]{});
+    }
+    catch (Throwable $throwable) {
+      $rethrow($throwable,ParserRobot202510.class,"ignore",$line);
+    }
+    return $result;
   }
 }

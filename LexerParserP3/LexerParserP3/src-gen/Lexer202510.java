@@ -931,7 +931,7 @@ public final class Lexer202510 {
     }
     return $result;
   }
-  public static Object initialize() {
+  public static Object initialize_() {
     int $line=0;
     Object $result=null;
     $try:try {
@@ -946,54 +946,126 @@ public final class Lexer202510 {
       $line=219;
       alphaNum=$cast(ISet.class,$fix($opUnionY($opUnionY($opUnionY(alphaUpper,alphaLower),digits),GCollections.asSet('?','#'))));
       $line=221;
-      keyWords=$cast(ISet.class,$fix($opUnionY($opUnionY($opUnionY($opUnionY($opUnionY($opUnionY(GCollections.asSet("proc"),GCollections.asSet("goto","with","move","turn","face","put","pick","jump","nop")),GCollections.asSet("with","ofType","toThe","inDir")),GCollections.asSet("#left","#right","#around","#north","#south","#west","#east","#chips","#balloons")),GCollections.asSet("if","then","else","while","do","for","repeat")),GCollections.asSet("facing","canPut","canPick","canMove","canJump","not")),GCollections.emptySet())));
-      $line=229;
-      allSymbols=$cast(ISet.class,$fix(GCollections.asSet("(",")",":","=",".","|","[","]")));
-      $line=241;
-      Lexer202510.p("proc",'P');
-      $line=243;
-      Lexer202510.p("goto",'G');
-      $line=244;
-      Lexer202510.p("move",'M');
-      $line=245;
-      Lexer202510.p("turn",'T');
-      $line=246;
-      Lexer202510.p("face",'F');
-      $line=247;
-      Lexer202510.p("put",'U');
-      $line=248;
-      Lexer202510.p("pick",'I');
-      $line=249;
-      Lexer202510.p("jump",'J');
-      $line=250;
-      Lexer202510.p("nop",'N');
-      $line=252;
-      Lexer202510.p("with",'h');
-      $line=253;
-      Lexer202510.p("ofType",'o');
-      $line=254;
-      Lexer202510.p("toThe",'t');
-      $line=255;
-      Lexer202510.p("inDir",'i');
-      $line=258;
-      Lexer202510.p("#left",'l');
-      $line=259;
-      Lexer202510.p("#right",'r');
-      $line=260;
-      Lexer202510.p("#around",'a');
-      $line=261;
-      Lexer202510.p("#north",'n');
-      $line=262;
-      Lexer202510.p("#south",'s');
-      $line=263;
-      Lexer202510.p("#west",'w');
-      $line=264;
-      Lexer202510.p("#east",'e');
-      $line=266;
+      keyWords=$cast(ISet.class,$fix(GCollections.asSet("turn","face","jump","move","#right","#north","inDir")));
+      $line=222;
+      allSymbols=$cast(ISet.class,$fix(GCollections.asSet("(",")",":",".","|","[","]")));
+      $line=233;
+      ((gold.structures.map.GHashTableMap)translation).put("turn",'T');
+      $line=235;
+      ((gold.structures.map.GHashTableMap)translation).put("move",'m');
+      $line=236;
+      ((gold.structures.map.GHashTableMap)translation).put("#right",'r');
+      $line=237;
+      ((gold.structures.map.GHashTableMap)translation).put("#north",'n');
+      $line=238;
+      ((gold.structures.map.GHashTableMap)translation).put("inDir",'&');
+      $line=240;
       ((gold.structures.map.GHashTableMap)translation).put("IdL",'v');
-      $line=267;
+      $line=241;
       ((gold.structures.map.GHashTableMap)translation).put("IdU",'v');
-      $line=269;
+      $line=244;
+      ((gold.structures.map.GHashTableMap)translation).put("Num",'#');
+    }
+    catch (Throwable $throwable) {
+      $rethrow($throwable,Lexer202510.class,"initialize_",$line);
+    }
+    return $result;
+  }
+  public static Object initialize() {
+    int $line=0;
+    Object $result=null;
+    $try:try {
+      $line=250;
+      skipChars=$cast(ISet.class,$fix(GCollections.asSet(' ','\t','\n')));
+      $line=251;
+      alphaUpper=$cast(ISet.class,$fix($opIntvlY('A','Z')));
+      $line=252;
+      alphaLower=$cast(ISet.class,$fix($opIntvlY('a','z')));
+      $line=253;
+      digits=$cast(ISet.class,$fix($opIntvlY('0','9')));
+      $line=254;
+      alphaNum=$cast(ISet.class,$fix($opUnionY($opUnionY($opUnionY(alphaUpper,alphaLower),digits),GCollections.asSet('?','#'))));
+      $line=256;
+      keyWords=$cast(ISet.class,$fix($opUnionY($opUnionY($opUnionY($opUnionY($opUnionY($opUnionY(GCollections.asSet("proc"),GCollections.asSet("goto","with","move","turn","face","put","pick","jump","nop")),GCollections.asSet("with","ofType","toThe","inDir")),GCollections.asSet("#left","#right","#around","#north","#south","#west","#east","#chips","#balloons")),GCollections.asSet("if","then","else","while","do","for","repeat")),GCollections.asSet("facing","canPut","canPick","canMove","canJump","not")),GCollections.emptySet())));
+      $line=264;
+      allSymbols=$cast(ISet.class,$fix(GCollections.asSet("(",")",":","=",".","|","[","]")));
+      $line=272;
+      Lexer202510.p("proc",'P');
+      $line=274;
+      Lexer202510.p("goto",'G');
+      $line=275;
+      Lexer202510.p("move",'M');
+      $line=276;
+      Lexer202510.p("turn",'Y');
+      $line=277;
+      Lexer202510.p("face",'F');
+      $line=278;
+      Lexer202510.p("put",'U');
+      $line=279;
+      Lexer202510.p("pick",'Z');
+      $line=280;
+      Lexer202510.p("jump",'J');
+      $line=281;
+      Lexer202510.p("nop",'/');
+      $line=283;
+      Lexer202510.p("with",'h');
+      $line=284;
+      Lexer202510.p("ofType",'o');
+      $line=285;
+      Lexer202510.p("toThe",'t');
+      $line=286;
+      Lexer202510.p("inDir",'i');
+      $line=288;
+      Lexer202510.p("#north",'O');
+      $line=289;
+      Lexer202510.p("#south",'O');
+      $line=290;
+      Lexer202510.p("#west",'O');
+      $line=291;
+      Lexer202510.p("#east",'O');
+      $line=293;
+      Lexer202510.p("#balloons",'X');
+      $line=294;
+      Lexer202510.p("#chips",'X');
+      $line=296;
+      Lexer202510.p("#front",'d');
+      $line=297;
+      Lexer202510.p("#left",'d');
+      $line=298;
+      Lexer202510.p("#right",'d');
+      $line=299;
+      Lexer202510.p("#around",'d');
+      $line=301;
+      Lexer202510.p("if",'I');
+      $line=302;
+      Lexer202510.p("then",'T');
+      $line=303;
+      Lexer202510.p("else",'E');
+      $line=304;
+      Lexer202510.p("while",'W');
+      $line=305;
+      Lexer202510.p("do",'D');
+      $line=306;
+      Lexer202510.p("for",'F');
+      $line=307;
+      Lexer202510.p("repeat",'R');
+      $line=309;
+      Lexer202510.p("facing",'1');
+      $line=310;
+      Lexer202510.p("canPut",'2');
+      $line=311;
+      Lexer202510.p("canPick",'3');
+      $line=312;
+      Lexer202510.p("canMove",'4');
+      $line=313;
+      Lexer202510.p("canJump",'5');
+      $line=314;
+      Lexer202510.p("not",'6');
+      $line=316;
+      ((gold.structures.map.GHashTableMap)translation).put("IdL",'v');
+      $line=317;
+      ((gold.structures.map.GHashTableMap)translation).put("IdU",'v');
+      $line=319;
       ((gold.structures.map.GHashTableMap)translation).put("Num",'#');
     }
     catch (Throwable $throwable) {
@@ -1005,12 +1077,12 @@ public final class Lexer202510 {
     int $line=0;
     Object $result=null;
     $try:try {
-      $line=274;
+      $line=324;
       ((gold.structures.map.GHashTableMap)translation).put(n1,n2);
-      $line=275;
+      $line=325;
       $result="";
       if (true) break $try;
-      $line=276;
+      $line=326;
       $rethrow(new RuntimeException("The function \"p(n1:Object,n2:Object)\" did not return a value."));
     }
     catch (Throwable $throwable) {

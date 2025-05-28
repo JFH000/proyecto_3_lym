@@ -2,55 +2,190 @@ using gold.**
 
 toSet(C) :=  {x|  x in C}
 
-
-///====   mini Parser===
+var M
 
 function createParser(A):IPushdownAutomaton begin
-	Q:={0,1,2,"m1","m2","o1","e","t1"}
+	Q:={1}∪{"varDef1","block1","procDefNoParams1","procDefParams1","blockp1",
+		"blocki1","blocki2","blocki3","blocki4","blocki5","blocki6",
+		"condition1","conditionn1","limitBlock1","limitBlock2","blockw1",
+		"blockw2","blockw3","blockf1"}
+	Σ:=toSet(A)∪{' ', '\n'}
+	Γ:=Σ
+	q₀:=1
+	F:= {1}
+	M=GPushdownAutomaton(Q,Σ,Γ,q₀,F)
 	
-	Σ:=toSet(A)  ∪ {' ', '\n'}
+	defVars(1,1)
+	procDefNoParams(1)
+	procDefParams(1)
+	block(1,1,true,true,true)
 	
-	Γ:={'1'}
-	q₀:=0
-	F:= {2}
-	M:=GPushdownAutomaton(Q,Σ,Γ,q₀,F)
-SkipChars := {' ', '\n'}   // this will only  be used when testing only the parser as the lexer removes  SkipChars
 	
-   M.delta(0,1,"[").push("1")
-    M.delta(1,"m1","m:").ignore()  // move
-   M.delta("m1","e","#").ignore()
-    M.delta("m1","m2","#").ignore()
-   M.delta("m1","e","v").ignore()
-    M.delta("m1","m2","v").ignore()
-     
-     
-     M.delta("m2","o1","&:").ignore() 
-     M.delta("o1","e","n").ignore()  //orientation (last token before .)
-     
-     M.delta(1,"t1","T:").ignore()  // turn.
-     M.delta("t1","e","r").ignore()  // direction (last token before .)
-     
-      M.delta("e",1,".").ignore()     // command end
-   
-    M.delta(1,2,"]").pop("1") // block end
-    
-     
-  
+	ignore(1,1," ")
+	ignore(1,1,"\n")
+	
+
+	if false then
+		GAutomataFrame.show(M)
+	end
+	return M
+end
+
+procedure defVars(state1,state2) begin
+	s1:="varDef1"
+	ignore(state1,s1,"|")
+	ignore(s1,s1,"v")	
+	ignore(s1,state2,"|")
+end
+
+procedure procDefNoParams(state) begin
+	s1:="procDefNoParams1"
+	ignore(state,s1,"Pv")
+	block(s1,state,true,true,true)
+	
+end
+
+procedure procDefParams(state) begin
+	s1:="procDefParams1"
+	ignore(state,s1,"P")
+	ignore(s1,s1,"v:v")
+	ignore(s1,s1,"v:#")
+	block(s1,state,true,true,true)
+end
+
+procedure block(state1,state2,useIf,useWhile,useFor) begin
+	s1:="block1"
+	ignore(state1,s1,"[")
+	defVars(s1,s1)
+	
+	//var call
+	ignore(s1,s1,"v:=v.")
+	ignore(s1,s1,"v:=#.")
+	
+	//proc no params call
+	ignore(s1,s1,"v.")
+	
+	//proc params call
+	sp:="blockp1"
+	ignore(s1,sp,"")
+	ignore(sp,sp,"v:v")
+	ignore(sp,sp,"v:#")
+	ignore(sp,s1,".")
+	
+	//if
+	if useIf then
+		si1:="blocki1"
+		si2:="blocki2"
+		si3:="blocki3"
+		si4:="blocki4"
+		si5:="blocki5"
+		ignore(s1,si1,"I:")
+		condition(si1,si2,true)
+		ignore(si2,si3,"T:")
+		block(si3,si4,false,useWhile,useFor)
+		ignore(si4,si5,"E:")
+		block(si5,s1,false,useWhile,useFor)
+	end
+	
+	//while
+	if useWhile then
+		sw1:="blockw1"
+		sw2:="blockw2"
+		sw3:="blockw3"
+		ignore(s1,sw1,"W:")
+		condition(sw1,sw2,true)
+		ignore(sw2,sw3,"D:")
+		block(sw3,s1,useIf,false,useFor)
+	end
+	
+	//for
+	if useFor then
+		sf1:="blockf1"
+		ignore(s1,sf1,"F:#R:")
+		ignore(s1,sf1,"F:vR:")
+		block(sf1,s1,useIf,useWhile,false)
+	end
+	
+	//other functions
+	
+	//goto G
+	ignore(s1,s1,"G:#h:#.")
+	ignore(s1,s1,"G:#h:v.")
+	ignore(s1,s1,"G:vh:#.")
+	ignore(s1,s1,"G:vh:v.")
+	//move M
+	ignore(s1,s1,"M:#.")
+	ignore(s1,s1,"M:v.")
+	ignore(s1,s1,"M:#t:D.")
+	ignore(s1,s1,"M:vt:D.")
+	ignore(s1,s1,"M:#i:O.")
+	ignore(s1,s1,"M:vi:O.")
+	//turn Y
+	ignore(s1,s1,"Y:d.")
+	//face F
+	ignore(s1,s1,"F:O.")
+	//put U
+	ignore(s1,s1,"U:#o:X.")
+	ignore(s1,s1,"U:vo:X.")
+	//pick Z
+	ignore(s1,s1,"Z:#o:X.")
+	ignore(s1,s1,"Z:vo:X.")
+	//jump J
+	ignore(s1,s1,"J:#t:D.")
+	ignore(s1,s1,"J:vt:D.")
+	ignore(s1,s1,"J:#i:O.")
+	ignore(s1,s1,"J:vi:O.")
+	//nop /
+	ignore(s1,s1,"/.")
+	//with h
+	
+	
+	ignore(s1,state2,"]")
+end
 
 
- 
+procedure condition(state1,state2,useNot) begin
+	//s1:="condition1"
+	sn1:="conditionn1"
+	// facing
+	ignore(state1,state2,"1:O")
+	//canPut
+	ignore(state1,state2,"2:#o:X")
+	ignore(state1,state2,"2:vo:X")
+	//canPick
+	ignore(state1,state2,"3:#o:X")
+	ignore(state1,state2,"3:vo:X")
+	//canMove
+	ignore(state1,state2,"4:#t:d")
+	ignore(state1,state2,"4:vt:d")
+	ignore(state1,state2,"4:#i:O")
+	ignore(state1,state2,"4:vi:O")
+	//canJump
+	ignore(state1,state2,"5:#t:d")
+	ignore(state1,state2,"5:vt:d")
+	ignore(state1,state2,"5:#i:O")
+	ignore(state1,state2,"5:vi:O")
+	//not
+	if useNot then
+		ignore(state1,sn1,"6:")
+		condition(sn1,state2,false)
+	end
+	//ignore(s1,state2,"")
+end
 
+procedure ct(op1,op2) begin
+	M.delta(1,1,"").changeTop(op1,op2)
+end
 
+procedure push(a,b,c,op) begin
+	M.delta(a,b,c).push(op)
+end
 
+procedure pop(a,b,c,op) begin
+	M.delta(a,b,c).pop(op)
+end
 
-
- for each q in Q do
- 	for each s in SkipChars do
- 	   M.delta(q,q,λ+s).ignore()
- end
- end
-
-
-return M
+procedure ignore(a,b,op) begin
+	M.delta(a,b,op).ignore()
 end
 
